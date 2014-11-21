@@ -98,4 +98,4 @@ class Jeton {
         return _valeur;
     }
 
-}//end class Jeton
+}
