@@ -1,28 +1,26 @@
 package com.controller;
 
         import com.view.TaquinGUI;
-        import javax.swing.JFrame;
+
+        import javax.swing.*;
+        import java.awt.*;
 
 public class Taquin {
 
     public static void main(String[] args) {
 
-        JFrame window = new JFrame("Taquin");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setContentPane(new TaquinGUI());
-        window.pack();
-        window.setResizable(true);
-        window.setVisible(true);
+        JPanel chrono = new JPanel();
+        chrono.add(new util.Chrono(120));
 
-        /*
-        JFrame f = new JFrame("Test du compte à rebours");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setContentPane(new TaquinGUI());
-        f.add(new util.Chrono(60));
-        f.pack();
-        f.setResizable(true);
-        f.setVisible(true);
-        */
+        JFrame game = new JFrame("Taquin");
+        game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.getContentPane().setLayout(new GridLayout(1,2));
+        //game.getContentPane().add(chrono);
+        game.getContentPane().add(new TaquinGUI());
+        game.setSize(400,600);
+        game.setResizable(true);
+        game.setVisible(true);
+
     }
 }
 
