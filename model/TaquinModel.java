@@ -2,8 +2,8 @@ package com.model;
 
 public class TaquinModel {
 
-    private static final int ROWS = 4;
-    private static final int COLS = 4;
+    private static final int ROWS = 10;
+    private static final int COLS = 10;
     private Jeton[][] _contenu;  //Les jetons
     private Jeton _videJeton; // Le jeton vide
 

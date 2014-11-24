@@ -12,7 +12,7 @@ public class Taquin {
         window.setContentPane(new TaquinGUI());
         window.pack();
         window.setVisible(true);
-        window.setResizable(false);
+        window.setResizable(true);
     }
 }
 
