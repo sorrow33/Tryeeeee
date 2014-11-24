@@ -33,17 +33,14 @@ public class TaquinModel {
     // Initialise et mélange les jetons
     public void reset() {
         for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) {
-                _contenu[r][c] = new Jeton(r, c, "" + (r * COLS + c + 1));
-            }
+            for (int c = 0; c < COLS; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * COLS + c + 1));
         }
         _videJeton = _contenu[ROWS - 1][COLS - 1];
         _videJeton.setValeur(null);
 
         for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) {
+            for (int c = 0; c < COLS; c++)
                 echangeJeton(r, c, (int) (Math.random() * ROWS), (int) (Math.random() * COLS)); // mélange
-            }
         }
     }
 
@@ -51,8 +48,11 @@ public class TaquinModel {
     // Déplace le jeton à la case vide si possible.
     // Renvoie vraie s'il y a eu déplacement, faux sinon.
     public boolean bougerJeton(int r, int c) {
-        return estLibre(r, c, -1, 0) || estLibre(r, c, 1, 0)
-                || estLibre(r, c, 0, -1) || estLibre(r, c, 0, 1);
+        if (estLibre(r, c, -1, 0)) return true;
+        if (estLibre(r, c, 1, 0)) return true;
+        if (estLibre(r, c, 0, -1)) return true;
+        if (estLibre(r, c, 0, 1)) return true;
+        return false;
     }
 
     // estLibre
@@ -62,7 +62,7 @@ public class TaquinModel {
         int rVoisin = r + rdelta;
         int cVoisin = c + cdelta;
         if (estLegalRC(rVoisin, cVoisin)
-                && _contenu[rVoisin][cVoisin] == _videJeton) {
+                && (_contenu[rVoisin][cVoisin] == _videJeton)) {
             echangeJeton(r, c, rVoisin, cVoisin);
             return true;
         }
@@ -72,7 +72,7 @@ public class TaquinModel {
     // estLegalRC
     // Vérifie si une colonne / ligne est bonne.
     public boolean estLegalRC(int r, int c) {
-        return r >= 0 && r < ROWS && c >= 0 && c < COLS;
+        return (r >= 0) && (r < ROWS) && (c >= 0) && (c < COLS);
     }
 
     // echangeJeton
