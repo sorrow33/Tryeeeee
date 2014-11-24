@@ -2,8 +2,8 @@ package com.model;
 
 public class TaquinModel {
 
-    private static final int ROWS = 10;
-    private static final int COLS = 10;
+    private int ROWS = 4;
+    private int COLS = 4;
     private Jeton[][] _contenu;  //Les jetons
     private Jeton _videJeton; // Le jeton vide
 
@@ -13,8 +13,18 @@ public class TaquinModel {
         reset();
     }
 
+    // Modifie le nombre de lignes
+    public void setCOLS(int cols){
+        COLS = cols;
+    }
+
+    // Modifie le nombre de lignes
+    public void setROWS(int rows){
+        ROWS = rows;
+    }
+
     // getValeur
-    // Retourne la valeure du jeton dans une string.
+    // Retourne la valeur du jeton dans une string.
     public String getValeur(int row, int col) {
         return _contenu[row][col].getValeur();
     }

@@ -39,8 +39,8 @@ public class TaquinGUI extends JPanel {
 
     class GraphicsPanel extends JPanel implements MouseListener {
 
-        private static final int ROWS = 4;
-        private static final int COLS = 4;
+        private int ROWS = 4;
+        private int COLS = 4;
         private static final int CASE_SIZE = 80;
         private Font _biggerFont;
 
