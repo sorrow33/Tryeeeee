@@ -87,18 +87,22 @@ public class TaquinModel extends Observable {
     private boolean estLibre(int r, int c, int rdelta, int cdelta) {
         int rVoisin = r + rdelta;
         int cVoisin = c + cdelta;
-        if (estLegalRC(rVoisin, cVoisin)
-                && (_contenu[rVoisin][cVoisin] == _videJeton)) {
-            echangeJeton(r, c, rVoisin, cVoisin);
-            return true;
-        }
+        if ((_contenu[rVoisin][cVoisin] == _videJeton))
+            if (estLegalRC(rVoisin, cVoisin)) {
+                echangeJeton(r, c, rVoisin, cVoisin);
+                return true;
+            }
         return false;
     }
 
     // estLegalRC
     // Vérifie si une colonne / ligne est bonne.
     public boolean estLegalRC(int r, int c) {
-        return (r >= 0) && (r < _rows) && (c >= 0) && (c < _cols);
+        if ((r < _rows))
+            return (r >= 0) && (c >= 0) && (c < _cols);
+        else {
+            return false;
+        }
     }
 
     // echangeJeton
