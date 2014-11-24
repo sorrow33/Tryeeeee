@@ -18,6 +18,8 @@ public class TaquinGUI extends JPanel {
         // Crée un bouton et un écouteur
         JLabel Name = new JLabel("Nom: ");
         JTextField nameField = new JFormattedTextField("Entre ton nom...");
+        JLabel numberC = new JLabel("Nombre de colonnes et de lignes souhaitées : ");
+        JTextField numberCase = new JFormattedTextField();
         JButton newGameButton = new JButton("Nouveau jeu");
         newGameButton.addActionListener(new NouveauJeuAction());
 
@@ -27,6 +29,8 @@ public class TaquinGUI extends JPanel {
         controlPanel.add(newGameButton);
         controlPanel.add(Name);
         controlPanel.add(nameField);
+        controlPanel.add(numberC);
+        controlPanel.add(numberCase);
 
         // Crée un graphicsPanel
         _taquinGraphic = new GraphicsPanel();
