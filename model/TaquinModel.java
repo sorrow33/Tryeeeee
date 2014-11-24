@@ -9,12 +9,20 @@ public class TaquinModel extends Observable {
     private Jeton[][] _contenu;  //Les jetons
     private Jeton _videJeton; // Le jeton vide
 
+    public TaquinModel(int _rows, int _cols) {
+        this._rows = _rows;
+        this._cols = _cols;
+        _contenu = new Jeton[_rows][_cols];
+        reset();
+    }
+
     // constructeur
     public TaquinModel() {
         this._rows=6;
         this._cols=6;
         _contenu = new Jeton[_rows][_cols];
         reset();
+
     }
     public int get_rows() {
         return _rows;
@@ -42,16 +50,25 @@ public class TaquinModel extends Observable {
     // reset
     // Initialise et mélange les jetons
     public void reset() {
-        for (int r = 0; r < _rows; r++) {
-            for (int c = 0; c < _cols; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * _cols + c + 1));
+        int r;
+        int c;
+        for ( r = 0; r < _rows; r++) {
+            for ( c = 0; c < _cols; c++) {
+                _contenu[r][c] = new Jeton(r, c, "" + (r * _cols + c + 1));
+            }
         }
         _videJeton = _contenu[_rows - 1][_cols - 1];
         _videJeton.setValeur(null);
 
-        for (int r = 0; r < _rows; r++) {
-            for (int c = 0; c < _cols; c++)
+        for ( r = 0; r < _rows; r++) {
+            for ( c = 0; c < _cols; c++)
                 echangeJeton(r, c, (int) (Math.random() * _rows), (int) (Math.random() * _cols)); // mélange
         }
+    }
+
+    public int ajoutCol()
+    {
+        return _cols++;
     }
 
     // bougerJeton
