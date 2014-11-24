@@ -16,21 +16,32 @@ public class TaquinGUI extends JPanel {
     public TaquinGUI() {
 
         // Crée un bouton et un écouteur
-        JLabel Name = new JLabel("Nom: ");
+        /*JLabel Name = new JLabel("Nom: ");
         JTextField nameField = new JFormattedTextField("Entre ton nom...");
         JLabel numberC = new JLabel("Nombre de colonnes et de lignes souhaitées : ");
-        JTextField numberCase = new JFormattedTextField();
+        JTextField numberCase = new JFormattedTextField();*/
         JButton newGameButton = new JButton("Nouveau jeu");
         newGameButton.addActionListener(new NouveauJeuAction());
-
+        JButton upCol = new JButton("+ col");
+        upCol.addActionListener(new addCol());
+        JButton downCol = new JButton("- col");
+        downCol.addActionListener(new delCol());
+        JButton upLine = new JButton("+ ligne");
+        upLine.addActionListener(new addLine());
+        JButton downLine = new JButton("- ligne");
+        downLine.addActionListener(new delLine());
         // Crée un controlPanel
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
         controlPanel.add(newGameButton);
-        controlPanel.add(Name);
+        controlPanel.add(upCol);
+        controlPanel.add(downCol);
+        controlPanel.add(upLine);
+        controlPanel.add(downLine);
+        /*controlPanel.add(Name);
         controlPanel.add(nameField);
         controlPanel.add(numberC);
-        controlPanel.add(numberCase);
+        controlPanel.add(numberCase);*/
 
         // Crée un graphicsPanel
         _taquinGraphic = new GraphicsPanel();
@@ -43,8 +54,8 @@ public class TaquinGUI extends JPanel {
 
     class GraphicsPanel extends JPanel implements MouseListener {
 
-        private int ROWS = 4;
-        private int COLS = 4;
+        private int ROWS = 6;
+        private int COLS = 6;
         private static final int CASE_SIZE = 80;
         private Font _biggerFont;
 
@@ -67,7 +78,7 @@ public class TaquinGUI extends JPanel {
                     String text = _taquinModel.getValeur(r, c);
                     if (text != null) {
                         g.setColor(Color.gray);
-                        g.fillRect(x + 2, y + 2, CASE_SIZE - 4, CASE_SIZE - 4);
+                        g.fillRect(x + 2, y + 2, CASE_SIZE - 6, CASE_SIZE - 4);
                         g.setColor(Color.black);
                         g.setFont(_biggerFont);
                         g.drawString(text, x + 20, y + (3 * CASE_SIZE) / 4);
@@ -111,4 +122,38 @@ public class TaquinGUI extends JPanel {
             _taquinGraphic.repaint();
         }
     }
+    public class addCol implements  ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            _taquinGraphic.repaint();
+        }
+    }
+             public class delCol implements  ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            _taquinGraphic.repaint();
+        }
+    }
+
+             public class addLine implements  ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            _taquinGraphic.repaint();
+        }
+    }
+
+             public class delLine implements  ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            _taquinGraphic.repaint();
+        }
+    }
+
 }
+
+
+
