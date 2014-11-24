@@ -2,25 +2,33 @@ package com.model;
 
 public class TaquinModel {
 
-    private int ROWS = 6;
-    private int COLS = 6;
+    private int _rows;
+    private int _cols;
     private Jeton[][] _contenu;  //Les jetons
     private Jeton _videJeton; // Le jeton vide
 
     // constructeur
     public TaquinModel() {
-        _contenu = new Jeton[ROWS][COLS];
+        this._rows=6;
+        this._cols=6;
+        _contenu = new Jeton[_rows][_cols];
         reset();
     }
+    public int get_rows() {
+        return _rows;
+    }
 
+    public int get_cols() {
+        return _cols;
+    }
     // Modifie le nombre de lignes
-    public void setCOLS(int cols){
-        COLS = cols;
+    public void set_cols(int cols){
+        _cols = cols;
     }
 
     // Modifie le nombre de lignes
-    public void setROWS(int rows){
-        ROWS = rows;
+    public void set_rows(int rows){
+        _rows = rows;
     }
 
     // getValeur
@@ -32,15 +40,15 @@ public class TaquinModel {
     // reset
     // Initialise et mélange les jetons
     public void reset() {
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * COLS + c + 1));
+        for (int r = 0; r < _rows; r++) {
+            for (int c = 0; c < _cols; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * _cols + c + 1));
         }
-        _videJeton = _contenu[ROWS - 1][COLS - 1];
+        _videJeton = _contenu[_rows - 1][_cols - 1];
         _videJeton.setValeur(null);
 
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++)
-                echangeJeton(r, c, (int) (Math.random() * ROWS), (int) (Math.random() * COLS)); // mélange
+        for (int r = 0; r < _rows; r++) {
+            for (int c = 0; c < _cols; c++)
+                echangeJeton(r, c, (int) (Math.random() * _rows), (int) (Math.random() * _cols)); // mélange
         }
     }
 
@@ -72,7 +80,7 @@ public class TaquinModel {
     // estLegalRC
     // Vérifie si une colonne / ligne est bonne.
     public boolean estLegalRC(int r, int c) {
-        return (r >= 0) && (r < ROWS) && (c >= 0) && (c < COLS);
+        return (r >= 0) && (r < _rows) && (c >= 0) && (c < _cols);
     }
 
     // echangeJeton
