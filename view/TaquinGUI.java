@@ -118,7 +118,7 @@ public class TaquinGUI extends JPanel {
 
     // class NouveauJeuAction
     public class NouveauJeuAction implements ActionListener {
-
+        @Override
         public void actionPerformed(ActionEvent e) {
             _taquinModel.reset();
             _taquinGraphic.repaint();
