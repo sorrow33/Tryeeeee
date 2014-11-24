@@ -54,13 +54,15 @@ public class TaquinGUI extends JPanel {
 
     class GraphicsPanel extends JPanel implements MouseListener {
 
-        private int ROWS = 6;
-        private int COLS = 6;
+        private int ROWS;
+        private int COLS;
         private static final int CASE_SIZE = 80;
         private Font _biggerFont;
 
         // constructeur
         public GraphicsPanel() {
+            this.ROWS=_taquinModel.get_rows();
+            this.COLS=_taquinModel.get_cols();
             _biggerFont = new Font("SansSerif", Font.BOLD, CASE_SIZE / 2);
             this.setPreferredSize(
                     new Dimension(CASE_SIZE * COLS, CASE_SIZE * ROWS)); // dimensions

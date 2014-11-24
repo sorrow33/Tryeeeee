@@ -1,6 +1,8 @@
 package com.model;
 
-public class TaquinModel {
+import java.util.Observable;
+
+public class TaquinModel extends Observable {
 
     private int _rows;
     private int _cols;
@@ -59,8 +61,7 @@ public class TaquinModel {
         if (estLibre(r, c, -1, 0)) return true;
         if (estLibre(r, c, 1, 0)) return true;
         if (estLibre(r, c, 0, -1)) return true;
-        if (estLibre(r, c, 0, 1)) return true;
-        return false;
+        return estLibre(r, c, 0, 1);
     }
 
     // estLibre
