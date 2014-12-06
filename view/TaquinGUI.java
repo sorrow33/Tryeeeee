@@ -38,8 +38,6 @@ public class TaquinGUI extends JPanel {
         controlPanel.add(delCol);
         controlPanel.add(addLi);
         controlPanel.add(delLi);
-        //controlPanel.add(Name);
-        //controlPanel.add(nameField);
 
         // Crée un graphicsPanel
         _taquinGraphic = new GraphicsPanel();
@@ -73,7 +71,6 @@ public class TaquinGUI extends JPanel {
             super.paintComponent(g);
             cols=_taquinModel.getCols();
             rows=_taquinModel.getRows();
-            System.out.println("paint"+cols);
             for (int r = 0; r < rows; r++) {
                 for (int c = 0; c < cols; c++) {
                     int x = c * CASE_SIZE;
