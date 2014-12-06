@@ -52,16 +52,18 @@ public class TaquinGUI extends JPanel {
 
     class GraphicsPanel extends JPanel implements MouseListener {
 
-        private int ROWS = 6;
-        private int COLS = 6;
+        private int rows;
+        private int cols;
         private int CASE_SIZE = 40;
         private Font _biggerFont;
 
         // constructeur
         public GraphicsPanel() {
+            this.rows =_taquinModel.getRows();
+            this.cols =_taquinModel.getCols();
             _biggerFont = new Font("SansSerif", Font.CENTER_BASELINE, CASE_SIZE / 4);
             this.setPreferredSize(
-                    new Dimension(CASE_SIZE * COLS, CASE_SIZE * ROWS)); // dimensions
+                    new Dimension(CASE_SIZE * cols, CASE_SIZE * rows)); // dimensions
             this.setBackground(Color.black); // arrière plan
             this.addMouseListener(this);  // Mouvements souris
         }
@@ -69,8 +71,11 @@ public class TaquinGUI extends JPanel {
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
-            for (int r = 0; r < ROWS; r++) {
-                for (int c = 0; c < COLS; c++) {
+            cols=_taquinModel.getCols();
+            rows=_taquinModel.getRows();
+            System.out.println("paint"+cols);
+            for (int r = 0; r < rows; r++) {
+                for (int c = 0; c < cols; c++) {
                     int x = c * CASE_SIZE;
                     int y = r * CASE_SIZE;
                     String text = _taquinModel.getValeur(r, c);
@@ -123,6 +128,8 @@ public class TaquinGUI extends JPanel {
 
     private class ajoutColAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            _taquinModel.colPlusUn();
+            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
             _taquinModel.reset();
             _taquinGraphic.repaint();
         }
@@ -130,12 +137,16 @@ public class TaquinGUI extends JPanel {
 
     private class delColAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            _taquinModel.colMoinsUn();
+            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
             _taquinModel.reset();
             _taquinGraphic.repaint();
         }
     }
     private class ajoutLiAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            _taquinModel.liPlusUn();
+            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
             _taquinModel.reset();
             _taquinGraphic.repaint();
         }
@@ -143,6 +154,8 @@ public class TaquinGUI extends JPanel {
 
     private class delLiAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            _taquinModel.liMoinsUn();
+            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
             _taquinModel.reset();
             _taquinGraphic.repaint();
         }

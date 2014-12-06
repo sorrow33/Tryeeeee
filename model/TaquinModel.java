@@ -24,21 +24,26 @@ public class TaquinModel {
         reset();
     }
     public TaquinModel(int rows,int cols) {
-        this.rows=getRows();
-        this.cols=getCols();
+        this.rows=rows;
+        this.cols=cols;
         _contenu = new Jeton[rows][cols];
         reset();
     }
 
 
     // Modifie le nombre de lignes
-    public void setCols(int cols){
-        this.cols = cols;
+    public void colPlusUn(){
+        this.cols = cols +1;
     }
-
+    public void colMoinsUn(){
+        this.cols = cols - 1;
+    }
     // Modifie le nombre de lignes
-    public void setRows(int rows){
-        this.rows = rows;
+    public void liPlusUn(){
+        this.rows = rows +1;
+    }
+    public void liMoinsUn(){
+        this.rows = rows -1;
     }
 
     // getValeur
@@ -50,8 +55,7 @@ public class TaquinModel {
     // reset
     // Initialise et mélange les jetons
     public void reset() {
-        this.rows=getRows();
-        this.cols=getCols();
+        System.out.println(cols);
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * cols + c + 1));
         }
