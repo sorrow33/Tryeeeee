@@ -5,6 +5,15 @@ public class TaquinModel {
     private int rows;
     private int cols;
     private Jeton[][] _contenu;  //Les jetons
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
     private Jeton _videJeton; // Le jeton vide
 
     // constructeur
@@ -34,6 +43,8 @@ public class TaquinModel {
     // reset
     // Initialise et mélange les jetons
     public void reset() {
+        this.rows=getRows();
+        this.cols=getCols();
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * cols + c + 1));
         }
