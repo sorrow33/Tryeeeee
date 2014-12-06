@@ -1,7 +1,6 @@
 package com.model;
 
 public class TaquinModel {
-
     private int rows;
     private int cols;
     private Jeton[][] _contenu;  //Les jetons

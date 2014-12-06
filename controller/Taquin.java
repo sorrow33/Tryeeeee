@@ -7,7 +7,7 @@ package com.controller;
 public class Taquin {
 
     public static void main(String[] args) {
-        JFrame window = new JFrame("Taquin");
+        JFrame window = new JFrame("Sireix Renaudon S3C");
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setContentPane(new TaquinGUI());
         window.pack();

@@ -8,7 +8,8 @@ import javax.swing.*;
 // class TaquinGUI
 // Interface GUI
 public class TaquinGUI extends JPanel {
-
+    private final int NB_MAX=10;
+    private final int NB_MIN=2;
     private GraphicsPanel _taquinGraphic;
     private TaquinModel _taquinModel = new TaquinModel();
 
@@ -125,36 +126,48 @@ public class TaquinGUI extends JPanel {
 
     private class ajoutColAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            _taquinModel.colPlusUn();
-            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
-            _taquinModel.reset();
-            _taquinGraphic.repaint();
+            if(_taquinModel.getCols()<NB_MAX) {
+                _taquinModel.colPlusUn();
+                _taquinModel = new TaquinModel(_taquinModel.getRows(), _taquinModel.getCols());
+                _taquinModel.reset();
+                _taquinGraphic.repaint();
+            }
+            else Toolkit.getDefaultToolkit().beep();
         }
 }
 
     private class delColAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            _taquinModel.colMoinsUn();
-            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
-            _taquinModel.reset();
-            _taquinGraphic.repaint();
+            if(_taquinModel.getCols()>NB_MIN) {
+                _taquinModel.colMoinsUn();
+                _taquinModel = new TaquinModel(_taquinModel.getRows(), _taquinModel.getCols());
+                _taquinModel.reset();
+                _taquinGraphic.repaint();
+            }
+            else Toolkit.getDefaultToolkit().beep();
         }
     }
     private class ajoutLiAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            if(_taquinModel.getRows()<NB_MAX) {
             _taquinModel.liPlusUn();
             _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
             _taquinModel.reset();
             _taquinGraphic.repaint();
+            }
+            else Toolkit.getDefaultToolkit().beep();
         }
     }
 
     private class delLiAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            _taquinModel.liMoinsUn();
-            _taquinModel = new TaquinModel(_taquinModel.getRows(),_taquinModel.getCols());
-            _taquinModel.reset();
-            _taquinGraphic.repaint();
+            if(_taquinModel.getRows()>NB_MIN) {
+                _taquinModel.liMoinsUn();
+                _taquinModel = new TaquinModel(_taquinModel.getRows(), _taquinModel.getCols());
+                _taquinModel.reset();
+                _taquinGraphic.repaint();
+            }
+            else Toolkit.getDefaultToolkit().beep();
         }
     }
 }
