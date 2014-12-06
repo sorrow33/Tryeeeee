@@ -16,17 +16,30 @@ public class TaquinGUI extends JPanel {
     public TaquinGUI() {
 
         // Crée un bouton et un écouteur
-        JLabel Name = new JLabel("Nom: ");
-        JTextField nameField = new JFormattedTextField("Entre ton nom...");
+
         JButton newGameButton = new JButton("Nouveau jeu");
+        JButton addCol = new JButton("+ colonne");
+        JButton delCol = new JButton("- colonne");
+        JButton addLi = new JButton("+ ligne");
+        JButton delLi = new JButton("- ligne");
+
+
         newGameButton.addActionListener(new NouveauJeuAction());
+        addCol.addActionListener(new ajoutColAction());
+        delCol.addActionListener(new delColAction());
+        addLi.addActionListener(new ajoutLiAction());
+        delLi.addActionListener(new delLiAction());
 
         // Crée un controlPanel
         JPanel controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
         controlPanel.add(newGameButton);
-        controlPanel.add(Name);
-        controlPanel.add(nameField);
+        controlPanel.add(addCol);
+        controlPanel.add(delCol);
+        controlPanel.add(addLi);
+        controlPanel.add(delLi);
+        //controlPanel.add(Name);
+        //controlPanel.add(nameField);
 
         // Crée un graphicsPanel
         _taquinGraphic = new GraphicsPanel();
@@ -39,14 +52,14 @@ public class TaquinGUI extends JPanel {
 
     class GraphicsPanel extends JPanel implements MouseListener {
 
-        private static final int ROWS = 4;
-        private static final int COLS = 4;
-        private static final int CASE_SIZE = 80;
+        private int ROWS = 6;
+        private int COLS = 6;
+        private int CASE_SIZE = 40;
         private Font _biggerFont;
 
         // constructeur
         public GraphicsPanel() {
-            _biggerFont = new Font("SansSerif", Font.BOLD, CASE_SIZE / 2);
+            _biggerFont = new Font("SansSerif", Font.CENTER_BASELINE, CASE_SIZE / 4);
             this.setPreferredSize(
                     new Dimension(CASE_SIZE * COLS, CASE_SIZE * ROWS)); // dimensions
             this.setBackground(Color.black); // arrière plan
@@ -102,6 +115,33 @@ public class TaquinGUI extends JPanel {
     // class NouveauJeuAction
     public class NouveauJeuAction implements ActionListener {
 
+        public void actionPerformed(ActionEvent e) {
+            _taquinModel.reset();
+            _taquinGraphic.repaint();
+        }
+    }
+
+    private class ajoutColAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            _taquinModel.reset();
+            _taquinGraphic.repaint();
+        }
+}
+
+    private class delColAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            _taquinModel.reset();
+            _taquinGraphic.repaint();
+        }
+    }
+    private class ajoutLiAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            _taquinModel.reset();
+            _taquinGraphic.repaint();
+        }
+    }
+
+    private class delLiAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             _taquinModel.reset();
             _taquinGraphic.repaint();

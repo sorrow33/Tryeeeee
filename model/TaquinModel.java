@@ -2,25 +2,27 @@ package com.model;
 
 public class TaquinModel {
 
-    private int ROWS = 4;
-    private int COLS = 4;
+    private int rows;
+    private int cols;
     private Jeton[][] _contenu;  //Les jetons
     private Jeton _videJeton; // Le jeton vide
 
     // constructeur
     public TaquinModel() {
-        _contenu = new Jeton[ROWS][COLS];
+        this.rows=6;
+        this.cols=6;
+        _contenu = new Jeton[rows][cols];
         reset();
     }
 
     // Modifie le nombre de lignes
-    public void setCOLS(int cols){
-        COLS = cols;
+    public void setCols(int cols){
+        this.cols = cols;
     }
 
     // Modifie le nombre de lignes
-    public void setROWS(int rows){
-        ROWS = rows;
+    public void setRows(int rows){
+        this.rows = rows;
     }
 
     // getValeur
@@ -32,15 +34,15 @@ public class TaquinModel {
     // reset
     // Initialise et mélange les jetons
     public void reset() {
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * COLS + c + 1));
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) _contenu[r][c] = new Jeton(r, c, "" + (r * cols + c + 1));
         }
-        _videJeton = _contenu[ROWS - 1][COLS - 1];
+        _videJeton = _contenu[rows - 1][cols - 1];
         _videJeton.setValeur(null);
 
-        for (int r = 0; r < ROWS; r++) {
-            for (int c = 0; c < COLS; c++)
-                echangeJeton(r, c, (int) (Math.random() * ROWS), (int) (Math.random() * COLS)); // mélange
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++)
+                echangeJeton(r, c, (int) (Math.random() * rows), (int) (Math.random() * cols)); // mélange
         }
     }
 
@@ -72,7 +74,7 @@ public class TaquinModel {
     // estLegalRC
     // Vérifie si une colonne / ligne est bonne.
     public boolean estLegalRC(int r, int c) {
-        return (r >= 0) && (r < ROWS) && (c >= 0) && (c < COLS);
+        return (r >= 0) && (r < rows) && (c >= 0) && (c < cols);
     }
 
     // echangeJeton
