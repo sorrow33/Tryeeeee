@@ -23,6 +23,13 @@ public class TaquinModel {
         _contenu = new Jeton[rows][cols];
         reset();
     }
+    public TaquinModel(int rows,int cols) {
+        this.rows=getRows();
+        this.cols=getCols();
+        _contenu = new Jeton[rows][cols];
+        reset();
+    }
+
 
     // Modifie le nombre de lignes
     public void setCols(int cols){
